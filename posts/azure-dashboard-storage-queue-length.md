@@ -1,3 +1,4 @@
+
 # Azure Dashboard Storage Queues Length
 
 I was trying to show the length of Azure Storage Queues within the [Azure Portal Dashboard](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards).
@@ -14,9 +15,13 @@ The URL points in this example to an Azure Function that queries the [Azure Stor
 
 This is as easy to [setup](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-markdown-tile) as it gets... and failed.
 
+
+![azure-portal-markdown-tile](https://user-images.githubusercontent.com/2217206/141157103-23de6e3f-e751-4d46-b6ff-77b8762650d7.jpg)
+
 ```
 There was an issue accessing the content. Please try again.
 ```
+![markdown-tile-failed](https://user-images.githubusercontent.com/2217206/141156997-f31cc899-d58d-4229-a38e-b65328b5898b.jpg)
 
 The browser network debugging tools were inconclusive.
 Fiddler didn't show any failures.
@@ -47,4 +52,3 @@ The http request origin header `req.headers["origin"]` can be evaluated to meet 
 > Limiting the possible Access-Control-Allow-Origin values to a set of allowed origins requires code on the server side to check the value of the Origin request header, compare that to a list of allowed origins, and then if the Origin value is in the list, set the Access-Control-Allow-Origin value to the same value as the Origin value.
 
 The Azure Function code meets my use case regarding security, performance, ... but I am not a 100% that this is the most straight forward way to display the Azure Storage Queue length within an Azure Portal Dashboard.
-

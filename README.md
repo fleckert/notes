@@ -1,3 +1,1 @@
-# notes
-
-[Azure Dashboard Storage Queue Length](Azure-Dashboard-Storage-Queue-Length.md)
+- [Azure Dashboard Storage Queue Length](./posts/azure-dashboard-storage-queue-length.md)
