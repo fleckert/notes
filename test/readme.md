@@ -15,9 +15,13 @@ The URL points in this example to an Azure Function that queries the [Azure Stor
 
 This is as easy to [setup](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-markdown-tile) as it gets... and failed.
 
+
+![azure-portal-markdown-tile](https://user-images.githubusercontent.com/2217206/141157103-23de6e3f-e751-4d46-b6ff-77b8762650d7.jpg)
+
 ```
 There was an issue accessing the content. Please try again.
 ```
+![markdown-tile-failed](https://user-images.githubusercontent.com/2217206/141156997-f31cc899-d58d-4229-a38e-b65328b5898b.jpg)
 
 The browser network debugging tools were inconclusive.
 Fiddler didn't show any failures.
