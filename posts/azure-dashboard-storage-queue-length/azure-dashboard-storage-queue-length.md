@@ -58,6 +58,8 @@ To display information that is not provided by the built in tiles... probably a 
 -----------
 # sample 
 
+please see https://github.com/fleckert/markdownQueueCount
+
 ```
 
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
