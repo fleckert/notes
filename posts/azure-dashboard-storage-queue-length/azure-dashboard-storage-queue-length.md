@@ -54,3 +54,48 @@ In an Azure Functions Node setup, please use the http request origin header `req
 The Azure Functions code meets my use case regarding security, performance, ... but I am not a 100% that this is the most straight forward way to display the Azure Storage Queue length within an Azure Portal Dashboard.
 
 To display information that is not provided by the built in tiles... probably a valid way to achieve the task at hand.
+
+-----------
+# sample 
+
+```
+
+import { AzureFunction, Context, HttpRequest } from "@azure/functions"
+import { EOL                                 } from "os";
+import { QueueClient, QueueServiceClient     } from "@azure/storage-queue";
+import { DefaultAzureCredential              } from "@azure/identity";
+
+const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+
+    const storageAccountName = "<<fill_in>>";
+    const url = `https://${storageAccountName}.queue.core.windows.net`;
+    const credential = new DefaultAzureCredential();
+
+    const queueServiceClient = new QueueServiceClient(url, credential);
+
+    const queues = queueServiceClient.listQueues();
+
+    let markdown = `|name|approximateMessagesCount|${EOL}`;
+
+    for await (const queue of queues) {
+        const queueClient = new QueueClient(`${url}/${queue.name}`, credential);
+
+        const queueProperties = await queueClient.getProperties();
+
+        markdown += `|${queue.name}|${queueProperties.approximateMessagesCount}|${EOL}`;
+    }
+
+    context.res = {
+        status: 200,
+        headers: {
+            "Content-Type": "text/plain; charset=utf-8",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "max-age=0"
+        },
+        body: markdown
+    };
+};
+
+export default httpTrigger;
+```
+
