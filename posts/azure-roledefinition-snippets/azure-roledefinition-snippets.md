@@ -1,4 +1,4 @@
-When ever doing [role assignments on Azure resources](https://docs.microsoft.com/en-us/azure/role-based-access-control/) I find myself [looking up the roleDefinition id](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles).
+Whenever doing [role assignments on Azure resources](https://docs.microsoft.com/en-us/azure/role-based-access-control/) I find myself [looking up the roleDefinition id](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles).
 
 Querying the role definitions can **also** be done with the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/role/definition?view=azure-cli-latest#az_role_definition_list)
 ```
@@ -94,7 +94,7 @@ The following [Azure Resource Manager Templates](https://docs.microsoft.com/en-u
 }
 ```
 
-Copy-pasting the lines from [snippets-variables.txt](./snippets-variables.txt) into the `variables` provides enough 'reusability/dry-ness/...' for *my* usecase.<br/>
+Copy-pasting the lines from [snippets-variables.txt](snippets-variables.txt) into the `variables` provides enough 'reusability/dry-ness/...' for *my* usecase.<br/>
 But... several ways to do it... use [outputs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/outputs) in a [linked template](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/linked-templates?#linked-template) to 'define' the `roleDefinition_xxx`'s
 
 **I find it more and more challenging to find the sweet spot between 'easy/simple/straightForward/...' and 'so clever that I screw it up... sooner or later...'.**
