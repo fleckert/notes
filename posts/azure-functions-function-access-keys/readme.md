@@ -1,4 +1,4 @@
-The shell script uses the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) and the [Azure Management Rest Api](https://docs.microsoft.com/en-us/rest/api/appservice/web-apps/get-function) is used to resolve the [Function access keys](https://docs.microsoft.com/en-us/azure/azure-functions/security-concepts#function-access-keys) for an [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/).
+The shell script uses the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) and the [Azure Management Rest Api](https://docs.microsoft.com/en-us/rest/api/appservice/web-apps/get-function) to resolve the [Function access keys](https://docs.microsoft.com/en-us/azure/azure-functions/security-concepts#function-access-keys) for an [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/).
 
 ```
 ./getFunctionAccessKeys.sh myResourceGroupName myFunctionAppName
