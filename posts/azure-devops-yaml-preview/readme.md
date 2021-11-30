@@ -27,7 +27,3 @@ that contains a preview of the yaml pipeline.
 # References
 - https://docs.microsoft.com/en-us/rest/api/azure/devops/pipelines/preview/preview?view=azure-devops-rest-6.1
 - https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
-
-
-## Known issues
-- the [Pipelines - List](https://docs.microsoft.com/en-us/rest/api/azure/devops/pipelines/pipelines/list?view=azure-devops-rest-6.1) `continuationToken` is not processed, `so organization/project`s with a lot of pipelines will not work reliably.

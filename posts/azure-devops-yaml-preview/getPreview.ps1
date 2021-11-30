@@ -14,15 +14,29 @@ if ($null -eq $pat -or "" -eq $pat) {
 else {
     $encodedPat = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(":$pat"))
 
-    $responsePipelines = Invoke-WebRequest -Headers @{Authorization = ("Basic $encodedPat") } -Uri "https://dev.azure.com/$organization/$project/_apis/pipelines?api-version=6.1-preview.1"
+    $pipelines = @()
 
-    $pipelines = (ConvertFrom-Json -InputObject $responsePipelines.Content)
+    $continuationtokenHeaderKey="x-ms-continuationtoken"
+    $continuationToken=$null
+    while ($true) {
+        $responsePipelines = Invoke-WebRequest -Headers @{Authorization = ("Basic $encodedPat") } -Uri "https://dev.azure.com/$organization/$project/_apis/pipelines?orderby=name&`$top=100&continuationToken=$continuationToken&api-version=6.1-preview.1"
+        $responsePipelinesParsed = (ConvertFrom-Json -InputObject $responsePipelines.Content)
+        
+        foreach($item in $responsePipelinesParsed.value){
+            $pipelines+=$item
+        }
 
-    # todo handle continuation token
-
+        if ($responsePipelines.Headers.ContainsKey($continuationtokenHeaderKey) -eq $true -and $responsePipelines.Headers[$continuationtokenHeaderKey].length -gt 0) {
+            $continuationToken = $responsePipelines.Headers[$continuationtokenHeaderKey][0]
+        }
+        else {
+            break
+        }
+    }
+    
     $pipeline = $null
 
-    foreach ($item in $pipelines.value) {
+    foreach ($item in $pipelines) {
         if ($item.name -ieq $pipelineName) {
             $pipeline = $item
             break
@@ -30,7 +44,7 @@ else {
     }
 
     if ($null -eq $pipeline) {
-        Write-Error "Failed to resolve $pipelineName in organization[$organization] and project[$project]."
+        Write-Error "Failed to resolve pipeline[$pipelineName] in organization[$organization] and project[$project]."
     }
     else {
         $responsePreview = Invoke-WebRequest `
@@ -39,7 +53,10 @@ else {
             -Headers @{Authorization = ("Basic $encodedPat") } `
             -ContentType "application/json" `
             -Body "{previewRun: true}"
-        
-        (ConvertFrom-Json -InputObject $responsePreview.Content).finalYaml | Out-File "$($organization)__$($project)__$($pipeline.name)__$($pipeline.Id)__$(Get-Date -Format "yyyyMMdd__HHmmss").yaml"
+        $filename="$($organization)__$($project)__$($pipeline.name)__$($pipeline.Id)__$(Get-Date -Format "yyyyMMdd__HHmmss").yaml"
+
+        (ConvertFrom-Json -InputObject $responsePreview.Content).finalYaml | Out-File $filename
+
+        Write-Host "Persisted final yaml preview of $organization/$project/$pipelineName to $filename."
     }
 }
