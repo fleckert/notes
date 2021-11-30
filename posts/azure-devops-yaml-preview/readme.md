@@ -1,6 +1,6 @@
 # Azure DevOps Pipeline Preview
 
-This snippet uses the [Azure DevOps Pipeline Preview Rest API](https://docs.microsoft.com/en-us/rest/api/azure/devops/pipelines/preview/preview?view=azure-devops-rest-6.1) with [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) authentication.
+This [snippet](./getPreview.ps1) uses the [Azure DevOps Pipeline Preview Rest API](https://docs.microsoft.com/en-us/rest/api/azure/devops/pipelines/preview/preview?view=azure-devops-rest-6.1) with [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) authentication.
 
 
 # Usage
