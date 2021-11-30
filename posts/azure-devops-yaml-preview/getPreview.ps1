@@ -53,7 +53,10 @@ else {
             -Headers @{Authorization = ("Basic $encodedPat") } `
             -ContentType "application/json" `
             -Body "{previewRun: true}"
-        
-        (ConvertFrom-Json -InputObject $responsePreview.Content).finalYaml | Out-File "$($organization)__$($project)__$($pipeline.name)__$($pipeline.Id)__$(Get-Date -Format "yyyyMMdd__HHmmss").yaml"
+        $filename="$($organization)__$($project)__$($pipeline.name)__$($pipeline.Id)__$(Get-Date -Format "yyyyMMdd__HHmmss").yaml"
+
+        (ConvertFrom-Json -InputObject $responsePreview.Content).finalYaml | Out-File $filename
+
+        Write-Host "Persisted final yaml preview of $organization/$project/$pipelineName to $filename."
     }
 }
