@@ -2,6 +2,8 @@
 
 This [snippet](./getPreview.ps1) uses the [Azure DevOps Pipeline Preview Rest API](https://docs.microsoft.com/en-us/rest/api/azure/devops/pipelines/preview/preview?view=azure-devops-rest-6.1) with [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) authentication.
 
+*_"Queues a dry run of the pipeline and returns an object containing the final yaml."_*
+
 
 # Usage
 Please set the environment variable
@@ -22,9 +24,7 @@ this will create a file named like
 ```
 that contains a preview of the yaml pipeline.
 
-*_"Queues a dry run of the pipeline and returns an object containing the final yaml."_*
-
-## References
+# References
 - https://docs.microsoft.com/en-us/rest/api/azure/devops/pipelines/preview/preview?view=azure-devops-rest-6.1
 - https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
