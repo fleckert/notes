@@ -20,6 +20,9 @@ this will create a file named like
 ```Powershell
 "$($organization)__$($project)__$($pipeline.name)__$($pipeline.Id)__$(Get-Date -Format "yyyyMMdd__HHmmss").yaml"
 ```
+that contains a preview of the yaml pipeline.
+
+*_Queues a dry run of the pipeline and returns an object containing the final yaml._*
 
 ## References
 - https://docs.microsoft.com/en-us/rest/api/azure/devops/pipelines/preview/preview?view=azure-devops-rest-6.1
