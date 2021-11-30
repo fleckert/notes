@@ -9,7 +9,7 @@ param (
 $pat = $env:AZURE_DEVOPS_PERSONAL_ACCESS_TOKEN
 
 if ($null -eq $pat -or "" -eq $pat) {
-    Write-Error "Please set the envrionment variable 'AZURE_DEVOPS_PERSONAL_ACCESS_TOKEN'."
+    Write-Error "Please set the environment variable 'AZURE_DEVOPS_PERSONAL_ACCESS_TOKEN' to a personal access token with Build(read) permissions. Please see https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate."
 }
 else {
     $encodedPat = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(":$pat"))
