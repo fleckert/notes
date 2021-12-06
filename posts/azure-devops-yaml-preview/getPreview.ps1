@@ -14,31 +14,25 @@ if ($null -eq $pat -or "" -eq $pat) {
 else {
     $encodedPat = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(":$pat"))
 
-    $pipelines = @()
-
     $continuationtokenHeaderKey="x-ms-continuationtoken"
     $continuationToken=$null
-    while ($true) {
+    $pipeline = $null
+
+    while ($null -eq $pipeline) {
         $responsePipelines = Invoke-WebRequest -Headers @{Authorization = ("Basic $encodedPat") } -Uri "https://dev.azure.com/$organization/$project/_apis/pipelines?orderby=name&`$top=100&continuationToken=$continuationToken&api-version=6.1-preview.1"
         $responsePipelinesParsed = (ConvertFrom-Json -InputObject $responsePipelines.Content)
         
         foreach($item in $responsePipelinesParsed.value){
-            $pipelines+=$item
+            if($item.name -ieq $pipelineName)
+            {
+                $pipeline=$item
+            }
         }
 
         if ($responsePipelines.Headers.ContainsKey($continuationtokenHeaderKey) -eq $true -and $responsePipelines.Headers[$continuationtokenHeaderKey].length -gt 0) {
             $continuationToken = $responsePipelines.Headers[$continuationtokenHeaderKey][0]
         }
         else {
-            break
-        }
-    }
-    
-    $pipeline = $null
-
-    foreach ($item in $pipelines) {
-        if ($item.name -ieq $pipelineName) {
-            $pipeline = $item
             break
         }
     }
