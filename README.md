@@ -4,4 +4,5 @@
 - [Azure ServiceTags and Ip adddresses lookup](https://azure.servicetags.expectingpain.com/)
 - [Azure Functions - resolve Function Access Keys](/posts/azure-functions-function-access-keys)
 - [Azure DevOps Pipeline Yaml Preview](/posts/azure-devops-yaml-preview)
+- [Azure KeyVault Secrets List](/posts/azure-keyvault-secrets-list)
 
