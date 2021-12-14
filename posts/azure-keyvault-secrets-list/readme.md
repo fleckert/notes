@@ -12,10 +12,11 @@ To list and show the secrets within an [Azure KeyVault](https://azure.microsoft.
 # Example usage:
 
 This helper script requires the Azure CLI and the current user logged in.
-For ypur convience, you may use the [Azure Shell](https://portal.azure.com/#cloudshell/) in Bash mode.
+
+For your convience, you may use the [Azure Shell](https://portal.azure.com/#cloudshell/) in Bash mode.
 
 ```
 curl -O https://raw.githubusercontent.com/fleckert/notes/main/posts/azure-keyvault-secrets-list/azureKeyVaultSecretsDump.sh
-chmod +x azureKeyVaultSecretsDump.sh
+chmod +x ./azureKeyVaultSecretsDump.sh
 ./azureKeyVaultSecretsDump.sh keyVaultName
 ```
