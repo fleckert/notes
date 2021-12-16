@@ -33,3 +33,12 @@ curl -O https://raw.githubusercontent.com/fleckert/notes/main/posts/azure-aks-ad
 chmod +x ./aksApiServerAddCurrentIp.sh
 ./aksApiServerAddCurrentIp.sh <resourceGroupName> <aksClusterName>
 ```
+
+# reinventing the wheel
+
+after creating an [issue](https://github.com/MicrosoftDocs/azure-docs/issues/85376), I was redirected [here](https://github.com/MicrosoftDocs/azure-docs/issues/80459)
+
+this [issue](https://github.com/MicrosoftDocs/azure-docs/issues/80459) holds code to do the same trick in Powershell...
+
+so... re-invented the wheel in another tech stack ;)
+
