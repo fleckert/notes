@@ -5,4 +5,5 @@
 - [Azure Functions - resolve Function Access Keys](/posts/azure-functions-function-access-keys)
 - [Azure DevOps Pipeline Yaml Preview](/posts/azure-devops-yaml-preview)
 - [Azure KeyVault Secrets List](/posts/azure-keyvault-secrets-list)
+- [Azure AKS Add Ip to api-server-authorized-ip-ranges](/posts/azure-aks-add-ip)
 
