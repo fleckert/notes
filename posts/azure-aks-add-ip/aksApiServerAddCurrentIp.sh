@@ -1,7 +1,3 @@
-#!/bin/sh
-
-set -e
-
 resourceGroup="$1"
 clusterName="$2"
 
