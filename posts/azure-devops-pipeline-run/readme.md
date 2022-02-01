@@ -14,7 +14,7 @@ PS> $env:AZURE_DEVOPS_PERSONAL_ACCESS_TOKEN = "a personal access token with Buil
 
 and call the snippet with specific repository references
 ```Powershell
-PS> ./runPipeline.ps1 -organization your_organization -project your_project -pipelineName your_pipeline_name -repositories "repositoryNameA::refs/heads/main::repositoryNameB:refs/tags/v1"
+PS> ./runPipeline.ps1 -organization your_organization -project your_project -pipelineName your_pipeline_name -repositories "repositoryNameA:refs/heads/main::repositoryNameB:refs/tags/v1"
 ```
 or without the `-repositories` parameter
 ```Powershell
@@ -41,8 +41,22 @@ resources:
       ref: main
 ```
 
+# Examples
 
+1. run pipeline from branch dev/enableXYZ
+```Powershell
+PS> ./runPipeline.ps1 -organization ... -project ... -pipelineName ... -repositories "self:refs/heads/dev/enableXYZ"
+```
 
+2.  run pipeline from default branch and use resource repositoryNameA from main branch
+```Powershell
+PS> ./runPipeline.ps1 -organization ... -project ... -pipelineName ... -repositories "repositoryNameA:refs/heads/main"
+```
+
+2.  run pipeline from branch dev/enableXYZ and use resource repositoryNameA from main branch and use resource repositoryNameB tag v1
+```Powershell
+PS> ./runPipeline.ps1 -organization ... -project ... -pipelineName ... -repositories "self:refs/heads/dev/enableXYZ::repositoryNameA:refs/heads/main::repositoryNameB:refs/tags/v1"
+```
 
 the syntax with double colons `::` and single colons `:` as seperators is based on [git check-ref-format](https://git-scm.com/docs/git-check-ref-format) defining that colon `:` is an invalid character in references.
 
