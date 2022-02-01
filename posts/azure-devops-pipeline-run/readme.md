@@ -21,6 +21,7 @@ or without the `-repositories` parameter
 PS> ./runPipeline.ps1 -organization your_organization -project your_project -pipelineName your_pipeline_name
 ```
 
+> use the syntax self:refs/heads/myTestBranch to start a run from the 'myTestBranch' branch wrt to the repository that contains the pipeline definition
 
 ```
 Syntax:    repository:ref::repository:ref
@@ -39,6 +40,9 @@ resources:
       name: repositoryB
       ref: main
 ```
+
+
+
 
 the syntax with double colons `::` and single colons `:` as seperators is based on [git check-ref-format](https://git-scm.com/docs/git-check-ref-format) defining that colon `:` is an invalid character in references.
 
