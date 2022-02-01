@@ -1,13 +1,8 @@
-# Azure StorageAccount - add your ip to the whitelist
+# Azure StorageAccount - add your ip to the networking whitelist
 
-To list and show the secrets within an [Azure KeyVault](https://azure.microsoft.com/en-us/services/key-vault/#product-overview), the principal (user/serviceprincipal/...) needs to have 
-- the [Access Policy](https://docs.microsoft.com/en-us/azure/key-vault/general/security-features#access-model-overview) Secret Get List enabled
-- the client ip address needs to be whitelisted (assuming [networking is restricted](https://docs.microsoft.com/en-us/azure/key-vault/general/network-security) to selected Virtual Networks)
+this might be a very small helper... but it solves one more repetitive task...
 
-# What's happening...
-- The [Access Policy](https://docs.microsoft.com/en-us/azure/key-vault/general/security-features#access-model-overview) Secret Get List are set.
-- The current ip address is added wrt [Networking](https://docs.microsoft.com/en-us/azure/key-vault/general/network-security).
-- The secrets are dumped to the stdout.
+add your current ip to the Azure Storage Account networking white list
 
 # Example usage:
 
@@ -16,7 +11,7 @@ This helper script requires the Azure CLI and the current user logged in.
 For your convience, you may use the [Azure Shell](https://portal.azure.com/#cloudshell/) in Bash mode.
 
 ```
-curl -O https://raw.githubusercontent.com/fleckert/notes/main/posts/azure-keyvault-secrets-list/azureKeyVaultSecretsDump.sh
-chmod +x ./azureKeyVaultSecretsDump.sh
-./azureKeyVaultSecretsDump.sh keyVaultName
+curl -O https://raw.githubusercontent.com/fleckert/notes/main/posts/azure-storage-account-add-ip/azureStorageAddIp.sh
+chmod +x ./azureStorageAddIp.sh
+./azureStorageAddIpsh storageAccountName
 ```
