@@ -4,6 +4,7 @@
 - [Azure ServiceTags and Ip adddresses lookup](https://azure.servicetags.expectingpain.com/)
 - [Azure Functions - resolve Function Access Keys](/posts/azure-functions-function-access-keys)
 - [Azure DevOps Pipeline Yaml Preview](/posts/azure-devops-yaml-preview)
+- [Azure DevOps Pipeline Yaml Run](/posts/azure-devops-pipeline-run)
 - [Azure KeyVault Secrets List](/posts/azure-keyvault-secrets-list)
 - [Azure AKS Add Ip to api-server-authorized-ip-ranges](/posts/azure-aks-add-ip)
 - [Azure StoreAccount Add Ip to networking whitelist](/posts/azure-storage-account-add-ip)
