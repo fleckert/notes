@@ -8,3 +8,4 @@
 - [Azure KeyVault Secrets List](/posts/azure-keyvault-secrets-list)
 - [Azure AKS Add Ip to api-server-authorized-ip-ranges](/posts/azure-aks-add-ip)
 - [Azure StoreAccount Add Ip to networking whitelist](/posts/azure-storage-account-add-ip)
+- [Windows Display Switch](/posts/windows-display-switch)
