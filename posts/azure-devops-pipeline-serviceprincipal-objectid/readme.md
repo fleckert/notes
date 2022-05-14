@@ -72,3 +72,9 @@ steps:
 
 - bash: echo "servicePrincipalObjectId '$(servicePrincipalObjectId)'"
 ```
+
+## Remarks
+
+- this is an inspiration... for reuse... move it to a re-usable template
+- AzurePowerShell@5 and AzureCLI@2 is used due to shortcomings (knowledge/time/...) on my side...
+<br/>how to do it in _only_ Azure Cli or _only_ Azure PowerShell -> happy to accept pull requests
