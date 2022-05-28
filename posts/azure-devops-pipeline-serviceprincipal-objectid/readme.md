@@ -50,16 +50,6 @@ variables:
     value: !!!<fill_in>!!!
 
 steps:
-- task: AzurePowerShell@5
-  displayName: resolve servicePrincipalAppId
-  inputs:
-    azureSubscription: $(serviceConnection)
-    ScriptType: 'InlineScript'
-    azurePowerShellVersion: 'LatestVersion'
-    Inline: |
-      $servicePrincipalAppId = (Get-AzContext).Account.Id
-      Write-Host "##vso[task.setvariable variable=servicePrincipalAppId;]$servicePrincipalAppId"
-
 - task: AzureCLI@2
   displayName: resolve servicePrincipalObjectId
   inputs:
@@ -67,14 +57,9 @@ steps:
     scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      $servicePrincipalObjectId=$(az ad sp list --filter "appId eq '$(servicePrincipalAppId)'" --query '[0].objectId' --output tsv)
-      echo "##vso[task.setvariable variable=servicePrincipalObjectId;]$servicePrincipalObjectId"
-
-- bash: echo "servicePrincipalObjectId '$(servicePrincipalObjectId)'"
+      $servicePrincipalAppId=$(az account show --query 'user.name' --output tsv)
+      $servicePrincipalObjectId=$(az ad sp list --filter "appId eq '$servicePrincipalAppId'" --query '[0].objectId' --output tsv)
+      Write-Host "servicePrincipalAppId[$servicePrincipalAppId] servicePrincipalObjectId[$servicePrincipalObjectId]"
+      Write-Host "##vso[task.setvariable variable=servicePrincipalObjectId;]$servicePrincipalObjectId"
 ```
 
-## Remarks
-
-- this is an inspiration... for reuse... move it to a re-usable template
-- AzurePowerShell@5 and AzureCLI@2 is used due to shortcomings (knowledge/time/...) on my side...
-<br/>how to do it in _only_ Azure Cli or _only_ Azure PowerShell -> happy to accept pull requests
