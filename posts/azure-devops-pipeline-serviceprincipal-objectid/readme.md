@@ -56,10 +56,13 @@ steps:
     azureSubscription: $(serviceConnection)
     scriptType: 'pscore'
     scriptLocation: 'inlineScript'
+    addSpnToEnvironment: true
     inlineScript: |
-      $servicePrincipalAppId=$(az account show --query 'user.name' --output tsv)
-      $servicePrincipalObjectId=$(az ad sp list --filter "appId eq '$servicePrincipalAppId'" --query '[0].objectId' --output tsv)
-      Write-Host "servicePrincipalAppId[$servicePrincipalAppId] servicePrincipalObjectId[$servicePrincipalObjectId]"
+      $azureCliVersion = $(az version --query '\"azure-cli\"' --output tsv)
+      # https://docs.microsoft.com/en-us/cli/azure/microsoft-graph-migration
+      $idProperty = $azureCliVersion -ge "2.37.0" ? "id" : "objectId"
+      $servicePrincipalObjectId=$(az ad sp list --filter "appId eq '$($env:servicePrincipalId)'" --query "[0].$idProperty" --output tsv)
+      Write-Host "servicePrincipalAppId[$($env:servicePrincipalId)] servicePrincipalObjectId[$servicePrincipalObjectId]"
       Write-Host "##vso[task.setvariable variable=servicePrincipalObjectId;]$servicePrincipalObjectId"
 ```
 
