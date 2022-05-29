@@ -20,7 +20,7 @@ for the servicePrincipal that executes the Azure DevOps pipeline.
 - [Storage Blob Data Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
 
 the [Microsoft.Authorization roleAssignments](https://docs.microsoft.com/en-us/azure/templates/microsoft.authorization/roleassignments) principalId
-<br/>--> is the objectId of the servicPrincipal 
+<br/>--> is the objectId of the servicePrincipal 
 <br/>----> of the Azure DevOps Service Connection
 <br/>-------> of the Azure DevOps pipeline
 
